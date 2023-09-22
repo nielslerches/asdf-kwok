@@ -12,11 +12,11 @@ fail() {
 	exit 1
 }
 
-curl_opts=(-fsSL)
+wget_opts=(--quiet --https-only)
 
 # NOTE: You might want to remove this if kwok is not hosted on GitHub releases.
 if [ -n "${GITHUB_API_TOKEN:-}" ]; then
-	curl_opts=("${curl_opts[@]}" -H "Authorization: token $GITHUB_API_TOKEN")
+	wget_opts=("${wget_opts[@]}" --header "Authorization: token $GITHUB_API_TOKEN")
 fi
 
 sort_versions() {
@@ -45,8 +45,9 @@ download_release() {
 	# TODO: Adapt the release URL convention for kwok
 	url="$GH_REPO/releases/download/v${version}/${input_filename}"
 
-	echo "* Downloading $TOOL_NAME release $version..."
-	curl "${curl_opts[@]}" -o "$output_filename" -C - "$url" || fail "Could not download $url"
+	echo "* Downloading $output_filename release $version..."
+
+	wget "${wget_opts[@]}" --output-file "$output_filename" "$url"
 }
 
 install_version() {
