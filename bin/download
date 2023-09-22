@@ -38,9 +38,4 @@ for tool_name in ${tool_names[@]}; do
 
     # Download tar.gz file to the download directory
     download_release "$ASDF_INSTALL_VERSION" "$input_filename" "$output_filename"
-
-    cp 
 done
-
-# Remove the tar.gz file since we don't need to keep it
-rm "$output_filename"
