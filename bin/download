@@ -34,7 +34,7 @@ tool_names=("kwok" "kwokctl")
 
 for tool_name in ${tool_names[@]}; do
     input_filename="$tool_name-$OS-$ARCHITECTURE"
-    output_filename="$ASDF_DOWNLOAD_PATH/$tool_name"
+    output_filename="$ASDF_DOWNLOAD_PATH/bin/$tool_name"
 
     # Download tar.gz file to the download directory
     download_release "$ASDF_INSTALL_VERSION" "$input_filename" "$output_filename"
