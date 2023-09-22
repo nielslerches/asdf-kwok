@@ -16,8 +16,8 @@ case "${KERNEL_NAME}" in
             OS="darwin"
             ;;
     Linux)
-           OS="linux"
-           ;;
+            OS="linux"
+            ;;
     *) echo "Unknown operating system: ${KERNEL_NAME}"
        exit 1
 esac
@@ -33,9 +33,6 @@ esac
 tool_names=("kwok" "kwokctl")
 
 for tool_name in ${tool_names[@]}; do
-    input_filename="$tool_name-$OS-$ARCHITECTURE"
-    output_filename="$ASDF_DOWNLOAD_PATH/bin/$tool_name"
-
     # Download tar.gz file to the download directory
-    download_release "$ASDF_INSTALL_VERSION" "$input_filename" "$output_filename"
+    download_release "$ASDF_INSTALL_VERSION" "$tool_name" "$OS" "$ARCHITECTURE" "$ASDF_DOWNLOAD_PATH"
 done
