@@ -43,7 +43,7 @@ download_release() {
 	output_filename="$3"
 
 	# TODO: Adapt the release URL convention for kwok
-	url="$GH_REPO/releases/v${version}/${input_filename}"
+	url="$GH_REPO/releases/download/v${version}/${input_filename}"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$output_filename" -C - "$url" || fail "Could not download $url"
