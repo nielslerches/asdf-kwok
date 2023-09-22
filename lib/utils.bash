@@ -39,7 +39,7 @@ list_all_versions() {
 download_release() {
 	local version input_filename output_filename url
 	version="$1"
-	input_filename="$1"
+	input_filename="$2"
 	output_filename="$3"
 
 	# TODO: Adapt the release URL convention for kwok
