@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for kwok.
-GH_REPO="https://gihtub.com/kubernetes-sigs/kwok"
+GH_REPO="https://github.com/kubernetes-sigs/kwok"
 TOOL_NAME="kwok"
 TOOL_TEST="kwok --help"
 
@@ -37,12 +37,13 @@ list_all_versions() {
 }
 
 download_release() {
-	local version filename url
+	local version input_filename output_filename url
 	version="$1"
-	filename="$2"
+	input_filename="$1"
+	output_filename="$3"
 
 	# TODO: Adapt the release URL convention for kwok
-	url="$GH_REPO/archive/v${version}.tar.gz"
+	url="$GH_REPO/releases/v${version}/${input_filename}"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
