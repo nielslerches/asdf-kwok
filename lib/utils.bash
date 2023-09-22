@@ -37,7 +37,7 @@ list_all_versions() {
 }
 
 download_release() {
-	local version tool_name os architecture download_path
+	local version tool_name os architecture download_path url output_path
 	version="$1"
 	tool_name="$2"
 	os="$3"
@@ -46,12 +46,12 @@ download_release() {
 
 	# TODO: Adapt the release URL convention for kwok
 	url="$GH_REPO/releases/download/v${version}/${tool_name}-${os}-${architecture}"
+	output_path="${download_path}/bin/${tool_name}"
 
 	echo "* Downloading $tool_name release $version..."
 
-	echo "* $download_path"
-
-	wget "${wget_opts[@]}" --output-file "${download_path}/${tool_name}" "$url"
+	wget "${wget_opts[@]}" --output-file "$output_path" "$url"
+	chmod +x "$output_path"
 }
 
 install_version() {
