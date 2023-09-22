@@ -46,7 +46,7 @@ download_release() {
 
 	# TODO: Adapt the release URL convention for kwok
 	url="$GH_REPO/releases/download/v${version}/${tool_name}-${os}-${architecture}"
-	output_path="${download_path}/bin/${tool_name}"
+	output_path="${download_path}/${tool_name}"
 
 	echo "* Downloading $tool_name release $version..."
 
