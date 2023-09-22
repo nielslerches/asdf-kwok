@@ -33,7 +33,6 @@ esac
 tool_names=("kwok" "kwokctl")
 
 for tool_name in ${tool_names[@]}; do
-    local input_filename
     input_filename="$tool_name-$OS-$ARCHITECTURE"
     output_filename="$ASDF_DOWNLOAD_PATH/$tool_name"
 
