@@ -49,6 +49,8 @@ download_release() {
 
 	echo "* Downloading $tool_name release $version..."
 
+	echo "* $download_path"
+
 	wget "${wget_opts[@]}" --output-file "${download_path}/${tool_name}" "$url"
 }
 
